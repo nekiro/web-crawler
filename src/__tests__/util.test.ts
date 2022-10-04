@@ -21,6 +21,7 @@ describe('util', () => {
     test('should output expected data to file', async () => {
       const url = 'https://foo.com/';
 
+      const correctOutput = `https://foo.com/\n\thttps://foo.com/contact\n\thttps://foo.com/about\n\thttps://foo.com/foo\n\thttps://foo.com/about/bar.jpg\nhttps://foo.com/contact\n\thttps://foo.com/about\nhttps://foo.com/about\nhttps://foo.com/foo\n`;
       let generatedOutput = '';
 
       const mockFile: any = {
@@ -46,7 +47,7 @@ describe('util', () => {
 
       const result = await util.getUrls(url, mockFile);
 
-      expect(generatedOutput).toBe(generatedOutput);
+      expect(generatedOutput).toEqual(correctOutput);
       expect(result).toBeTruthy();
     });
   });
